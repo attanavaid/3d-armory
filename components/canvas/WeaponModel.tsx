@@ -1,0 +1,48 @@
+"use client";
+
+import { useMemo } from "react";
+import { useGLTF } from "@react-three/drei";
+import * as THREE from "three";
+import { enhancePBRMaterials, normalizeModel } from "@/lib/normalizeModel";
+
+type WeaponModelProps = {
+  modelPath: string;
+  targetSize?: number;
+  yOffset?: number;
+  isActive?: boolean;
+};
+
+export function WeaponModel({
+  modelPath,
+  targetSize = 2,
+  yOffset = 0,
+  isActive = true,
+}: WeaponModelProps) {
+  const { scene } = useGLTF(modelPath);
+
+  const model = useMemo(() => {
+    const clone = scene.clone(true);
+    normalizeModel(clone, targetSize);
+    enhancePBRMaterials(clone);
+    clone.traverse((child) => {
+      if (!(child instanceof THREE.Mesh)) return;
+      const materials = Array.isArray(child.material)
+        ? child.material
+        : [child.material];
+      for (const mat of materials) {
+        if (mat instanceof THREE.MeshStandardMaterial) {
+          mat.opacity = isActive ? 1 : 0.35;
+          mat.transparent = !isActive;
+        }
+      }
+    });
+    return clone;
+  }, [scene, targetSize, isActive]);
+
+  return (
+    <primitive
+      object={model}
+      position={[0, yOffset + 0.35, 0]}
+    />
+  );
+}
