@@ -8,6 +8,7 @@ Interactive 3D weapon gallery built with Next.js, React Three Fiber, and PBR glT
 - Auto-rotating turntable with floating weapon display
 - PBR-accurate lighting (environment maps, rim lights, contact shadows)
 - Keyboard arrows, swipe, and on-screen navigation
+- **Light / dark theme** toggle with persisted preference and matching 3D scene lighting
 - Weapon manifest — add a GLB + one entry, no carousel code changes
 
 ## Getting started
