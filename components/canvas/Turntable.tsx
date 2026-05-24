@@ -3,6 +3,8 @@
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { useTheme } from "@/components/ThemeProvider";
+import { SCENE_THEMES } from "@/lib/sceneTheme";
 import { WeaponModel } from "./WeaponModel";
 import type { Weapon } from "@/data/weapons";
 
@@ -12,6 +14,8 @@ type TurntableProps = {
 };
 
 export function Turntable({ weapon, isActive }: TurntableProps) {
+  const { resolvedTheme } = useTheme();
+  const scene = SCENE_THEMES[resolvedTheme];
   const platformRef = useRef<THREE.Group>(null);
   const weaponRef = useRef<THREE.Group>(null);
 
@@ -31,17 +35,17 @@ export function Turntable({ weapon, isActive }: TurntableProps) {
         <mesh position={[0, 0.02, 0]} receiveShadow>
           <cylinderGeometry args={[1.1, 1.2, 0.08, 32]} />
           <meshStandardMaterial
-            color="#1a1f2e"
+            color={scene.platform}
             metalness={0.85}
-            roughness={0.25}
+            roughness={resolvedTheme === "dark" ? 0.25 : 0.35}
             envMapIntensity={1.5}
           />
         </mesh>
         <mesh position={[0, 0.09, 0]}>
           <torusGeometry args={[0.95, 0.03, 16, 48]} />
           <meshStandardMaterial
-            color="#22d3ee"
-            emissive="#0891b2"
+            color={scene.ring}
+            emissive={scene.ringEmissive}
             emissiveIntensity={isActive ? 0.6 : 0.15}
             metalness={0.9}
             roughness={0.2}
