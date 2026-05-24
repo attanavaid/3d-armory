@@ -16,50 +16,41 @@ type TurntableProps = {
 export function Turntable({ weapon, isActive }: TurntableProps) {
   const { resolvedTheme } = useTheme();
   const scene = SCENE_THEMES[resolvedTheme];
-  const platformRef = useRef<THREE.Group>(null);
-  const weaponRef = useRef<THREE.Group>(null);
+  const turntableRef = useRef<THREE.Group>(null);
 
   useFrame((state) => {
-    const t = state.clock.elapsedTime;
-    if (platformRef.current) {
-      platformRef.current.rotation.y = t * (isActive ? 0.35 : 0.15);
-    }
-    if (weaponRef.current && isActive) {
-      weaponRef.current.position.y = Math.sin(t * 1.2) * 0.04;
-    }
+    if (!turntableRef.current) return;
+    turntableRef.current.rotation.y =
+      state.clock.elapsedTime * (isActive ? 0.35 : 0.15);
   });
 
   return (
-    <group>
-      <group ref={platformRef}>
-        <mesh position={[0, 0.02, 0]} receiveShadow>
-          <cylinderGeometry args={[1.1, 1.2, 0.08, 32]} />
-          <meshStandardMaterial
-            color={scene.platform}
-            metalness={0.85}
-            roughness={resolvedTheme === "dark" ? 0.25 : 0.35}
-            envMapIntensity={1.5}
-          />
-        </mesh>
-        <mesh position={[0, 0.09, 0]}>
-          <torusGeometry args={[0.95, 0.03, 16, 48]} />
-          <meshStandardMaterial
-            color={scene.ring}
-            emissive={scene.ringEmissive}
-            emissiveIntensity={isActive ? 0.6 : 0.15}
-            metalness={0.9}
-            roughness={0.2}
-          />
-        </mesh>
-      </group>
-      <group ref={weaponRef}>
-        <WeaponModel
-          modelPath={weapon.modelPath}
-          targetSize={weapon.targetSize}
-          yOffset={weapon.turntableYOffset}
-          isActive={isActive}
+    <group ref={turntableRef}>
+      <mesh position={[0, 0.02, 0]} receiveShadow>
+        <cylinderGeometry args={[1.1, 1.2, 0.08, 32]} />
+        <meshStandardMaterial
+          color={scene.platform}
+          metalness={0.85}
+          roughness={resolvedTheme === "dark" ? 0.25 : 0.35}
+          envMapIntensity={1.5}
         />
-      </group>
+      </mesh>
+      <mesh position={[0, 0.09, 0]}>
+        <torusGeometry args={[0.95, 0.03, 16, 48]} />
+        <meshStandardMaterial
+          color={scene.ring}
+          emissive={scene.ringEmissive}
+          emissiveIntensity={isActive ? 0.6 : 0.15}
+          metalness={0.9}
+          roughness={0.2}
+        />
+      </mesh>
+      <WeaponModel
+        modelPath={weapon.modelPath}
+        targetSize={weapon.targetSize}
+        yOffset={weapon.turntableYOffset}
+        isActive={isActive}
+      />
     </group>
   );
 }
