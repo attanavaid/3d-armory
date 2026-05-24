@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Orbitron, Rajdhani } from "next/font/google";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 const rajdhani = Rajdhani({
@@ -30,6 +31,19 @@ export const metadata: Metadata = {
   },
 };
 
+const themeInitScript = `
+(function() {
+  try {
+    var stored = localStorage.getItem('armory-theme');
+    var theme = stored === 'light' || stored === 'dark'
+      ? stored
+      : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.classList.add(theme);
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,9 +52,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${rajdhani.variable} ${orbitron.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
+      className={`${rajdhani.variable} ${orbitron.variable} ${geistMono.variable} h-full antialiased dark`}
     >
-      <body className="font-sans min-h-full">{children}</body>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body className="min-h-full font-sans">
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }
