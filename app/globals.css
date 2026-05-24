@@ -1,10 +1,47 @@
 @import "tailwindcss";
 
-:root {
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant light (&:where(.light, .light *));
+
+:root,
+.dark {
   --background: #0a0b10;
   --foreground: #ededed;
-  --accent-cyan: #22d3ee;
-  --accent-violet: #a78bfa;
+  --accent-primary: #22d3ee;
+  --accent-secondary: #a78bfa;
+  --panel-bg: rgb(255 255 255 / 0.05);
+  --panel-bg-hover: rgb(34 211 238 / 0.1);
+  --panel-border: rgb(255 255 255 / 0.1);
+  --text-muted: rgb(255 255 255 / 0.6);
+  --text-subtle: rgb(255 255 255 / 0.5);
+  --text-heading: rgb(255 255 255 / 0.9);
+  --overlay-vignette: #0a0b10;
+  --tag-bg: rgb(139 92 246 / 0.1);
+  --tag-border: rgb(167 139 250 / 0.2);
+  --tag-text: #ddd6fe;
+  --nav-hover-cyan: rgb(34 211 238 / 0.1);
+  --nav-hover-violet: rgb(139 92 246 / 0.1);
+  --loading-bg: rgb(10 11 16 / 0.9);
+}
+
+.light {
+  --background: #e8edf4;
+  --foreground: #0f172a;
+  --accent-primary: #0891b2;
+  --accent-secondary: #7c3aed;
+  --panel-bg: rgb(255 255 255 / 0.75);
+  --panel-bg-hover: rgb(8 145 178 / 0.08);
+  --panel-border: rgb(15 23 42 / 0.12);
+  --text-muted: rgb(15 23 42 / 0.65);
+  --text-subtle: rgb(15 23 42 / 0.45);
+  --text-heading: rgb(15 23 42 / 0.92);
+  --overlay-vignette: #e8edf4;
+  --tag-bg: rgb(124 58 237 / 0.08);
+  --tag-border: rgb(124 58 237 / 0.2);
+  --tag-text: #5b21b6;
+  --nav-hover-cyan: rgb(8 145 178 / 0.12);
+  --nav-hover-violet: rgb(124 58 237 / 0.1);
+  --loading-bg: rgb(232 237 244 / 0.92);
 }
 
 @theme inline {
@@ -25,6 +62,7 @@ body {
 body {
   background: var(--background);
   color: var(--foreground);
+  transition: background-color 0.35s ease, color 0.35s ease;
 }
 
 .font-display {
