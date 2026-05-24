@@ -5,43 +5,43 @@
 
 :root,
 .dark {
-  --background: #0a0b10;
-  --foreground: #ededed;
-  --accent-primary: #22d3ee;
-  --accent-secondary: #a78bfa;
+  --background: #0a0a0a;
+  --foreground: #f3f4f6;
+  --accent-primary: #3b82f6;
+  --accent-secondary: #60a5fa;
   --panel-bg: rgb(255 255 255 / 0.05);
-  --panel-bg-hover: rgb(34 211 238 / 0.1);
-  --panel-border: rgb(255 255 255 / 0.1);
-  --text-muted: rgb(255 255 255 / 0.6);
-  --text-subtle: rgb(255 255 255 / 0.5);
-  --text-heading: rgb(255 255 255 / 0.9);
-  --overlay-vignette: #0a0b10;
-  --tag-bg: rgb(139 92 246 / 0.1);
-  --tag-border: rgb(167 139 250 / 0.2);
-  --tag-text: #ddd6fe;
-  --nav-hover-cyan: rgb(34 211 238 / 0.1);
-  --nav-hover-violet: rgb(139 92 246 / 0.1);
-  --loading-bg: rgb(10 11 16 / 0.9);
+  --panel-bg-hover: rgb(59 130 246 / 0.12);
+  --panel-border: rgb(255 255 255 / 0.12);
+  --text-muted: rgb(209 213 219 / 0.75);
+  --text-subtle: rgb(156 163 175 / 0.85);
+  --text-heading: rgb(249 250 251 / 0.95);
+  --overlay-vignette: #0a0a0a;
+  --tag-bg: rgb(59 130 246 / 0.12);
+  --tag-border: rgb(96 165 250 / 0.25);
+  --tag-text: #93c5fd;
+  --nav-hover-left: rgb(59 130 246 / 0.12);
+  --nav-hover-right: rgb(37 99 235 / 0.15);
+  --loading-bg: rgb(10 10 10 / 0.92);
 }
 
 .light {
-  --background: #e8edf4;
-  --foreground: #0f172a;
-  --accent-primary: #0891b2;
-  --accent-secondary: #7c3aed;
-  --panel-bg: rgb(255 255 255 / 0.75);
-  --panel-bg-hover: rgb(8 145 178 / 0.08);
-  --panel-border: rgb(15 23 42 / 0.12);
-  --text-muted: rgb(15 23 42 / 0.65);
-  --text-subtle: rgb(15 23 42 / 0.45);
-  --text-heading: rgb(15 23 42 / 0.92);
-  --overlay-vignette: #e8edf4;
-  --tag-bg: rgb(124 58 237 / 0.08);
-  --tag-border: rgb(124 58 237 / 0.2);
-  --tag-text: #5b21b6;
-  --nav-hover-cyan: rgb(8 145 178 / 0.12);
-  --nav-hover-violet: rgb(124 58 237 / 0.1);
-  --loading-bg: rgb(232 237 244 / 0.92);
+  --background: #f3f4f6;
+  --foreground: #111827;
+  --accent-primary: #2563eb;
+  --accent-secondary: #1d4ed8;
+  --panel-bg: rgb(255 255 255 / 0.85);
+  --panel-bg-hover: rgb(37 99 235 / 0.08);
+  --panel-border: rgb(17 24 39 / 0.1);
+  --text-muted: rgb(55 65 81 / 0.85);
+  --text-subtle: rgb(107 114 128 / 0.9);
+  --text-heading: rgb(17 24 39 / 0.95);
+  --overlay-vignette: #f3f4f6;
+  --tag-bg: rgb(37 99 235 / 0.08);
+  --tag-border: rgb(37 99 235 / 0.2);
+  --tag-text: #1d4ed8;
+  --nav-hover-left: rgb(37 99 235 / 0.1);
+  --nav-hover-right: rgb(29 78 216 / 0.12);
+  --loading-bg: rgb(243 244 246 / 0.94);
 }
 
 @theme inline {
