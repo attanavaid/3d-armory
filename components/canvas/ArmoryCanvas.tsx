@@ -21,7 +21,7 @@ export function ArmoryCanvas({
 }: ArmoryCanvasProps) {
   return (
     <Canvas
-      shadows
+      shadows="percentage"
       dpr={[1, 2]}
       gl={{ antialias: true, alpha: false }}
       className="h-full w-full touch-none"
