@@ -5,6 +5,10 @@ import {
   Environment,
   PerspectiveCamera,
 } from "@react-three/drei";
+import { useTheme } from "@/components/ThemeProvider";
+import { SCENE_LAYOUT } from "@/lib/sceneLayout";
+import { SCENE_THEMES } from "@/lib/sceneTheme";
+import { CameraRig } from "./CameraRig";
 import { CarouselRail } from "./CarouselRail";
 import type { Weapon } from "@/data/weapons";
 
@@ -21,16 +25,25 @@ export function ArmoryScene({
   instantCarousel = false,
   onTransitionEnd,
 }: ArmorySceneProps) {
+  const { resolvedTheme } = useTheme();
+  const scene = SCENE_THEMES[resolvedTheme];
+  const { stageY } = SCENE_LAYOUT;
+
   return (
     <>
-      <PerspectiveCamera makeDefault position={[0, 1.4, 5.5]} fov={40} />
-      <color attach="background" args={["#0a0b10"]} />
-      <fog attach="fog" args={["#0a0b10", 8, 18]} />
+      <PerspectiveCamera
+        makeDefault
+        position={SCENE_LAYOUT.cameraPosition}
+        fov={SCENE_LAYOUT.fov}
+      />
+      <CameraRig />
+      <color attach="background" args={[scene.background]} />
+      <fog attach="fog" args={[scene.fog, 8, 18]} />
 
-      <ambientLight intensity={0.25} />
+      <ambientLight intensity={scene.ambientIntensity} />
       <directionalLight
         position={[4, 6, 4]}
-        intensity={1.2}
+        intensity={scene.directionalIntensity}
         castShadow
         shadow-mapSize={[1024, 1024]}
       />
@@ -38,41 +51,43 @@ export function ArmoryScene({
         position={[-3, 5, 2]}
         angle={0.4}
         penumbra={0.5}
-        intensity={2}
+        intensity={scene.spotCyanIntensity}
         color="#22d3ee"
       />
       <spotLight
         position={[3, 4, -2]}
         angle={0.35}
         penumbra={0.6}
-        intensity={1.5}
+        intensity={scene.spotVioletIntensity}
         color="#a78bfa"
       />
 
-      <Environment preset="warehouse" />
-      <ContactShadows
-        position={[0, 0, 0]}
-        opacity={0.55}
-        scale={12}
-        blur={2.5}
-        far={4}
-      />
+      <Environment preset={scene.environmentPreset} />
 
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} receiveShadow>
         <circleGeometry args={[8, 64]} />
         <meshStandardMaterial
-          color="#0d1117"
-          metalness={0.6}
-          roughness={0.4}
+          color={scene.ground}
+          metalness={resolvedTheme === "dark" ? 0.6 : 0.35}
+          roughness={resolvedTheme === "dark" ? 0.4 : 0.55}
         />
       </mesh>
 
-      <CarouselRail
-        weapons={weapons}
-        activeIndex={activeIndex}
-        instant={instantCarousel}
-        onTransitionEnd={onTransitionEnd}
-      />
+      <group position={[0, stageY, 0]}>
+        <ContactShadows
+          position={[0, 0, 0]}
+          opacity={scene.contactShadowOpacity}
+          scale={12}
+          blur={2.5}
+          far={4}
+        />
+        <CarouselRail
+          weapons={weapons}
+          activeIndex={activeIndex}
+          instant={instantCarousel}
+          onTransitionEnd={onTransitionEnd}
+        />
+      </group>
     </>
   );
 }
