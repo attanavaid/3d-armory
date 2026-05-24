@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import { enhancePBRMaterials, normalizeModel } from "@/lib/normalizeModel";
+import { WEAPON_PLATFORM_OFFSET } from "@/lib/sceneLayout";
 
 type WeaponModelProps = {
   modelPath: string;
@@ -42,7 +43,7 @@ export function WeaponModel({
   return (
     <primitive
       object={model}
-      position={[0, yOffset + 0.35, 0]}
+      position={[0, yOffset + WEAPON_PLATFORM_OFFSET, 0]}
     />
   );
 }
