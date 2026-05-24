@@ -7,8 +7,6 @@ export type SceneTheme = {
   fog: string;
   ground: string;
   platform: string;
-  ring: string;
-  ringEmissive: string;
   ambientIntensity: number;
   directionalIntensity: number;
   spotPrimaryIntensity: number;
@@ -25,8 +23,6 @@ export const SCENE_THEMES: Record<ResolvedTheme, SceneTheme> = {
     fog: palette.black.base,
     ground: palette.gray[900],
     platform: palette.gray[800],
-    ring: palette.blue[500],
-    ringEmissive: palette.blue[600],
     ambientIntensity: 0.25,
     directionalIntensity: 1.2,
     spotPrimaryIntensity: 2,
@@ -41,8 +37,6 @@ export const SCENE_THEMES: Record<ResolvedTheme, SceneTheme> = {
     fog: palette.gray[100],
     ground: palette.gray[300],
     platform: palette.gray[200],
-    ring: palette.blue[600],
-    ringEmissive: palette.blue[700],
     ambientIntensity: 0.55,
     directionalIntensity: 1.4,
     spotPrimaryIntensity: 1.2,
