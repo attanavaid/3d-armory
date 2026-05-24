@@ -35,16 +35,6 @@ export function Turntable({ weapon, isActive }: TurntableProps) {
           envMapIntensity={1.5}
         />
       </mesh>
-      <mesh position={[0, 0.09, 0]}>
-        <torusGeometry args={[0.95, 0.03, 16, 48]} />
-        <meshStandardMaterial
-          color={scene.ring}
-          emissive={scene.ringEmissive}
-          emissiveIntensity={isActive ? 0.6 : 0.15}
-          metalness={0.9}
-          roughness={0.2}
-        />
-      </mesh>
       <WeaponModel
         modelPath={weapon.modelPath}
         targetSize={weapon.targetSize}
