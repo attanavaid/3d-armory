@@ -1,14 +1,17 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useGLTF } from "@react-three/drei";
+import { useTheme } from "@/components/ThemeProvider";
 import { WEAPONS } from "@/data/weapons";
 import { wrapIndex, getNeighborIndices } from "@/lib/carousel";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { DotIndicator } from "./ui/DotIndicator";
 import { LoadingOverlay } from "./ui/LoadingOverlay";
 import { NavArrows } from "./ui/NavArrows";
+import { ThemeToggle } from "./ui/ThemeToggle";
 import { WeaponPanel } from "./ui/WeaponPanel";
 
 const ArmoryCanvas = dynamic(
@@ -18,6 +21,7 @@ const ArmoryCanvas = dynamic(
 );
 
 export function Armory() {
+  const { resolvedTheme } = useTheme();
   const [activeIndex, setActiveIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isReady, setIsReady] = useState(false);
@@ -90,8 +94,9 @@ export function Armory() {
   };
 
   return (
-    <main className="relative h-dvh w-full overflow-hidden bg-[#0a0b10]">
-      <div
+    <main className="relative h-dvh w-full overflow-hidden bg-[var(--background)] transition-colors duration-300">
+      <motion.div
+        key={resolvedTheme}
         className="absolute inset-0"
         onPointerDown={handlePointerDown}
         onPointerUp={handlePointerUp}
@@ -102,17 +107,25 @@ export function Armory() {
           instantCarousel={reducedMotion}
           onTransitionEnd={handleTransitionEnd}
         />
-      </div>
+      </motion.div>
 
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#0a0b10_70%)]" />
+      <motion.div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: `radial-gradient(ellipse at center, transparent 0%, var(--overlay-vignette) 70%)`,
+        }}
+      />
 
-      <header className="pointer-events-none absolute top-0 right-0 left-0 z-20 p-6 md:p-8">
-        <p className="font-mono text-[10px] tracking-[0.35em] text-cyan-400/70 uppercase md:text-xs">
-          Fantasy Armory
-        </p>
-        <h2 className="font-display mt-1 text-lg text-white/90 md:text-xl">
-          3D Weapon Gallery
-        </h2>
+      <header className="pointer-events-none absolute top-0 right-0 left-0 z-20 flex items-start justify-between p-6 md:p-8">
+        <motion.div layout>
+          <p className="font-mono text-[10px] tracking-[0.35em] text-[var(--accent-primary)] uppercase opacity-70 md:text-xs">
+            Fantasy Armory
+          </p>
+          <h2 className="font-display mt-1 text-lg text-[var(--text-heading)] md:text-xl">
+            3D Weapon Gallery
+          </h2>
+        </motion.div>
+        <ThemeToggle />
       </header>
 
       <DotIndicator
