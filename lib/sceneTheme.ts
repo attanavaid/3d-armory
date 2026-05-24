@@ -1,3 +1,5 @@
+import { palette } from "@/lib/palette";
+
 export type ResolvedTheme = "dark" | "light";
 
 export type SceneTheme = {
@@ -9,38 +11,44 @@ export type SceneTheme = {
   ringEmissive: string;
   ambientIntensity: number;
   directionalIntensity: number;
-  spotCyanIntensity: number;
-  spotVioletIntensity: number;
+  spotPrimaryIntensity: number;
+  spotFillIntensity: number;
+  spotPrimaryColor: string;
+  spotFillColor: string;
   contactShadowOpacity: number;
   environmentPreset: "warehouse" | "studio" | "apartment";
 };
 
 export const SCENE_THEMES: Record<ResolvedTheme, SceneTheme> = {
   dark: {
-    background: "#0a0b10",
-    fog: "#0a0b10",
-    ground: "#0d1117",
-    platform: "#1a1f2e",
-    ring: "#22d3ee",
-    ringEmissive: "#0891b2",
+    background: palette.black.base,
+    fog: palette.black.base,
+    ground: palette.gray[900],
+    platform: palette.gray[800],
+    ring: palette.blue[500],
+    ringEmissive: palette.blue[600],
     ambientIntensity: 0.25,
     directionalIntensity: 1.2,
-    spotCyanIntensity: 2,
-    spotVioletIntensity: 1.5,
+    spotPrimaryIntensity: 2,
+    spotFillIntensity: 1.4,
+    spotPrimaryColor: palette.blue[400],
+    spotFillColor: palette.blue[600],
     contactShadowOpacity: 0.55,
     environmentPreset: "warehouse",
   },
   light: {
-    background: "#e8edf4",
-    fog: "#e8edf4",
-    ground: "#d1dae8",
-    platform: "#c5cedd",
-    ring: "#0891b2",
-    ringEmissive: "#06b6d4",
+    background: palette.gray[100],
+    fog: palette.gray[100],
+    ground: palette.gray[300],
+    platform: palette.gray[200],
+    ring: palette.blue[600],
+    ringEmissive: palette.blue[700],
     ambientIntensity: 0.55,
     directionalIntensity: 1.4,
-    spotCyanIntensity: 1.2,
-    spotVioletIntensity: 0.9,
+    spotPrimaryIntensity: 1.2,
+    spotFillIntensity: 0.9,
+    spotPrimaryColor: palette.blue[500],
+    spotFillColor: palette.blue[700],
     contactShadowOpacity: 0.35,
     environmentPreset: "studio",
   },
