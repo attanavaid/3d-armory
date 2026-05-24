@@ -16,7 +16,10 @@ export function DotIndicator({
   disabled,
 }: DotIndicatorProps) {
   return (
-    <div className="pointer-events-auto absolute top-8 left-1/2 z-20 flex -translate-x-1/2 gap-2 md:top-10">
+    <motion.div
+      className="pointer-events-auto absolute top-8 left-1/2 z-20 flex -translate-x-1/2 gap-2 md:top-10"
+      layout
+    >
       {Array.from({ length: total }).map((_, i) => (
         <button
           key={i}
@@ -29,19 +32,19 @@ export function DotIndicator({
           <span
             className={`block h-2 w-2 rounded-full transition ${
               i === activeIndex
-                ? "bg-cyan-400"
-                : "bg-white/20 hover:bg-white/40"
+                ? "bg-[var(--accent-primary)]"
+                : "bg-[var(--text-subtle)] hover:opacity-80"
             }`}
           />
           {i === activeIndex && (
             <motion.span
               layoutId="activeDot"
-              className="absolute inset-0 rounded-full ring-2 ring-cyan-400/50"
+              className="absolute inset-0 rounded-full ring-2 ring-[var(--accent-primary)]/50"
               transition={{ type: "spring", stiffness: 400, damping: 30 }}
             />
           )}
         </button>
       ))}
-    </div>
+    </motion.div>
   );
 }
