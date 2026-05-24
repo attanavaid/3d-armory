@@ -51,15 +51,15 @@ export function ArmoryScene({
         position={[-3, 5, 2]}
         angle={0.4}
         penumbra={0.5}
-        intensity={scene.spotCyanIntensity}
-        color="#22d3ee"
+        intensity={scene.spotPrimaryIntensity}
+        color={scene.spotPrimaryColor}
       />
       <spotLight
         position={[3, 4, -2]}
         angle={0.35}
         penumbra={0.6}
-        intensity={scene.spotVioletIntensity}
-        color="#a78bfa"
+        intensity={scene.spotFillIntensity}
+        color={scene.spotFillColor}
       />
 
       <Environment preset={scene.environmentPreset} />
