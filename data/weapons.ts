@@ -5,7 +5,6 @@ export type Weapon = {
   modelPath: string;
   targetSize?: number;
   turntableYOffset?: number;
-  tags?: string[];
   storeUrl?: string;
 };
 
@@ -16,7 +15,6 @@ export const WEAPONS: Weapon[] = [
     subtitle: "Forged in volcanic glass — PBR showcase",
     modelPath: "/models/weapons/obsidian-blade.glb",
     targetSize: 2.2,
-    tags: ["sword", "legendary"],
   },
   {
     id: "ember-axe",
@@ -25,7 +23,6 @@ export const WEAPONS: Weapon[] = [
     modelPath: "/models/weapons/ember-axe.glb",
     targetSize: 1.8,
     turntableYOffset: 0.1,
-    tags: ["axe", "rare"],
   },
   {
     id: "crystal-dagger",
@@ -34,7 +31,6 @@ export const WEAPONS: Weapon[] = [
     modelPath: "/models/weapons/crystal-dagger.glb",
     targetSize: 2.5,
     turntableYOffset: 0.05,
-    tags: ["dagger", "uncommon"],
   },
 ];
 
