@@ -27,33 +27,18 @@ export function WeaponPanel({ weapon, index, total }: WeaponPanelProps) {
           transition={{ duration: 0.35, delay: 0.15 }}
           className="rounded-2xl border border-[var(--panel-border)] bg-[var(--panel-bg)] p-6 shadow-lg backdrop-blur-xl"
         >
-          <motion.div
-            className="mb-3 flex items-center justify-between text-xs tracking-[0.2em] text-[var(--accent-primary)] uppercase opacity-80"
-          >
-            <span>Armory</span>
-            <span className="font-mono text-[var(--text-subtle)]">
-              {padded} / {totalPadded}
+          <div className="mb-2 flex items-start justify-between gap-4">
+            <h1 className="font-display text-2xl font-semibold tracking-wide text-[var(--text-heading)] md:text-3xl">
+              {weapon.name}
+            </h1>
+            <span className="shrink-0 font-mono text-xs text-[var(--text-subtle)] tabular-nums">
+              {padded}/{totalPadded}
             </span>
-          </motion.div>
-          <h1 className="font-display text-2xl font-semibold tracking-wide text-[var(--text-heading)] md:text-3xl">
-            {weapon.name}
-          </h1>
+          </div>
           {weapon.subtitle && (
-            <p className="mt-2 text-sm leading-relaxed text-[var(--text-muted)]">
+            <p className="text-sm leading-relaxed text-[var(--text-muted)]">
               {weapon.subtitle}
             </p>
-          )}
-          {weapon.tags && weapon.tags.length > 0 && (
-            <motion.div className="mt-4 flex flex-wrap gap-2">
-              {weapon.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full border border-[var(--tag-border)] bg-[var(--tag-bg)] px-3 py-1 text-xs text-[var(--tag-text)]"
-                >
-                  {tag}
-                </span>
-              ))}
-            </motion.div>
           )}
           {weapon.storeUrl && (
             <a
