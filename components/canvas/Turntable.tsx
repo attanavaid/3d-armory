@@ -17,11 +17,12 @@ export function Turntable({ weapon, isActive }: TurntableProps) {
   const { resolvedTheme } = useTheme();
   const scene = SCENE_THEMES[resolvedTheme];
   const turntableRef = useRef<THREE.Group>(null);
+  const rotationRef = useRef(0);
 
-  useFrame((state) => {
+  useFrame((_, delta) => {
     if (!turntableRef.current) return;
-    turntableRef.current.rotation.y =
-      state.clock.elapsedTime * (isActive ? 0.35 : 0.15);
+    rotationRef.current += delta * (isActive ? 0.35 : 0.15);
+    turntableRef.current.rotation.y = rotationRef.current;
   });
 
   return (
