@@ -16,9 +16,6 @@
   --text-subtle: rgb(156 163 175 / 0.85);
   --text-heading: rgb(249 250 251 / 0.95);
   --overlay-vignette: #0a0a0a;
-  --tag-bg: rgb(59 130 246 / 0.12);
-  --tag-border: rgb(96 165 250 / 0.25);
-  --tag-text: #93c5fd;
   --nav-hover-left: rgb(59 130 246 / 0.12);
   --nav-hover-right: rgb(37 99 235 / 0.15);
   --loading-bg: rgb(10 10 10 / 0.92);
@@ -36,9 +33,6 @@
   --text-subtle: rgb(107 114 128 / 0.9);
   --text-heading: rgb(17 24 39 / 0.95);
   --overlay-vignette: #f3f4f6;
-  --tag-bg: rgb(37 99 235 / 0.08);
-  --tag-border: rgb(37 99 235 / 0.2);
-  --tag-text: #1d4ed8;
   --nav-hover-left: rgb(37 99 235 / 0.1);
   --nav-hover-right: rgb(29 78 216 / 0.12);
   --loading-bg: rgb(243 244 246 / 0.94);
