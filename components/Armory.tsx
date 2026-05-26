@@ -8,7 +8,6 @@ import { useTheme } from "@/components/ThemeProvider";
 import { WEAPONS } from "@/data/weapons";
 import { wrapIndex, getNeighborIndices } from "@/lib/carousel";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { DotIndicator } from "./ui/DotIndicator";
 import { LoadingOverlay } from "./ui/LoadingOverlay";
 import { NavArrows } from "./ui/NavArrows";
 import { ThemeToggle } from "./ui/ThemeToggle";
@@ -117,23 +116,11 @@ export function Armory() {
       />
 
       <header className="pointer-events-none absolute top-0 right-0 left-0 z-20 flex items-start justify-between p-6 md:p-8">
-        <motion.div layout>
-          <p className="font-mono text-[10px] tracking-[0.35em] text-[var(--accent-primary)] uppercase opacity-70 md:text-xs">
-            Fantasy Armory
-          </p>
-          <h2 className="font-display mt-1 text-lg text-[var(--text-heading)] md:text-xl">
-            3D Weapon Gallery
-          </h2>
-        </motion.div>
+        <h1 className="font-display text-lg text-[var(--text-heading)] md:text-xl">
+          Armory
+        </h1>
         <ThemeToggle />
       </header>
-
-      <DotIndicator
-        total={total}
-        activeIndex={activeIndex}
-        onSelect={goTo}
-        disabled={isTransitioning}
-      />
 
       <NavArrows
         onPrev={goPrev}
