@@ -10,6 +10,12 @@ export type Weapon = {
 
 export const WEAPONS: Weapon[] = [
   {
+    id: "heavy-rocket-launcher",
+    name: "Heavy Rocket Launcher",
+    modelPath: "/models/weapons/heavy-rocket-launcher.glb",
+    targetSize: 2.4,
+  },
+  {
     id: "obsidian-blade",
     name: "Obsidian Blade",
     subtitle: "Forged in volcanic glass — PBR showcase",
