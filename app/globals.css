@@ -19,6 +19,7 @@
   --nav-hover-left: rgb(59 130 246 / 0.12);
   --nav-hover-right: rgb(37 99 235 / 0.15);
   --loading-bg: rgb(10 10 10 / 0.92);
+  --stat-track: rgb(255 255 255 / 0.08);
 }
 
 .light {
@@ -36,6 +37,7 @@
   --nav-hover-left: rgb(37 99 235 / 0.1);
   --nav-hover-right: rgb(29 78 216 / 0.12);
   --loading-bg: rgb(243 244 246 / 0.94);
+  --stat-track: rgb(17 24 39 / 0.08);
 }
 
 @theme inline {
