@@ -7,9 +7,15 @@ type WeaponPanelProps = {
   weapon: Weapon;
   index: number;
   total: number;
+  onInspect: () => void;
 };
 
-export function WeaponPanel({ weapon, index, total }: WeaponPanelProps) {
+export function WeaponPanel({
+  weapon,
+  index,
+  total,
+  onInspect,
+}: WeaponPanelProps) {
   const padded = String(index + 1).padStart(2, "0");
   const totalPadded = String(total).padStart(2, "0");
 
@@ -50,6 +56,15 @@ export function WeaponPanel({ weapon, index, total }: WeaponPanelProps) {
               View in store →
             </a>
           )}
+          <motion.button
+            type="button"
+            onClick={onInspect}
+            className="mt-5 w-full rounded-xl border border-[var(--accent-primary)]/30 bg-[var(--accent-primary)]/10 py-3 text-sm font-semibold tracking-wide text-[var(--accent-primary)] uppercase transition hover:bg-[var(--accent-primary)]/20"
+            whileHover={{ scale: 1.01 }}
+            whileTap={{ scale: 0.99 }}
+          >
+            Inspect
+          </motion.button>
         </motion.div>
       </AnimatePresence>
     </motion.div>
