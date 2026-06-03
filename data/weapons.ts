@@ -23,7 +23,6 @@ export type Weapon = {
   subtitle?: string;
   modelPath: string;
   targetSize?: number;
-  turntableYOffset?: number;
   inspectTargetSize?: number;
   storeUrl?: string;
   stats: WeaponStats;
@@ -66,7 +65,6 @@ export const WEAPONS: Weapon[] = [
     subtitle: "Heavy two-handed war axe",
     modelPath: "/models/weapons/ember-axe.glb",
     targetSize: 1.8,
-    turntableYOffset: 0.1,
     stats: {
       damage: 88,
       recoil: 15,
@@ -82,7 +80,6 @@ export const WEAPONS: Weapon[] = [
     subtitle: "Lightweight off-hand blade",
     modelPath: "/models/weapons/crystal-dagger.glb",
     targetSize: 2.5,
-    turntableYOffset: 0.05,
     stats: {
       damage: 48,
       recoil: 5,
