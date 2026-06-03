@@ -12,9 +12,12 @@ export function normalizeModel(
   const scale = targetSize / maxDim;
   object.scale.multiplyScalar(scale);
 
-  const centeredBox = new THREE.Box3().setFromObject(object);
-  const center = centeredBox.getCenter(new THREE.Vector3());
-  object.position.sub(center);
+  const alignedBox = new THREE.Box3().setFromObject(object);
+  const center = alignedBox.getCenter(new THREE.Vector3());
+  // Center on the turntable axis (X/Z); rest the bottom on y = 0.
+  object.position.x -= center.x;
+  object.position.z -= center.z;
+  object.position.y -= alignedBox.min.y;
 }
 
 export function enhancePBRMaterials(object: THREE.Object3D): void {
