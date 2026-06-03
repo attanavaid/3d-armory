@@ -55,7 +55,6 @@ export function InspectScene({ weapon }: InspectSceneProps) {
         <WeaponModel
           modelPath={weapon.modelPath}
           targetSize={inspectSize}
-          yOffset={weapon.turntableYOffset}
           isActive
         />
       </group>
