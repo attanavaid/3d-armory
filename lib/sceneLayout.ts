@@ -1,9 +1,9 @@
 /** Shared layout constants for camera framing and turntable placement. */
 export const SCENE_LAYOUT = {
-  /** Vertical position of the carousel / turntable in world space (lower = more room above the weapon). */
-  stageY: 0.08,
-  cameraPosition: [0, 1.05, 5.5] as const,
-  cameraTarget: [0, 1.0, 0] as const,
+  /** Vertical position of the carousel / turntable in world space. */
+  stageY: 0.32,
+  cameraPosition: [0, 1.08, 5.5] as const,
+  cameraTarget: [0, 1.02, 0] as const,
   fov: 38,
 };
 
