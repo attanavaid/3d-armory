@@ -9,14 +9,12 @@ import { WEAPON_PLATFORM_OFFSET } from "@/lib/sceneLayout";
 type WeaponModelProps = {
   modelPath: string;
   targetSize?: number;
-  yOffset?: number;
   isActive?: boolean;
 };
 
 export function WeaponModel({
   modelPath,
   targetSize = 2,
-  yOffset = 0,
   isActive = true,
 }: WeaponModelProps) {
   const { scene } = useGLTF(modelPath);
@@ -43,7 +41,7 @@ export function WeaponModel({
   return (
     <primitive
       object={model}
-      position={[0, yOffset + WEAPON_PLATFORM_OFFSET, 0]}
+      position={[0, WEAPON_PLATFORM_OFFSET, 0]}
     />
   );
 }
