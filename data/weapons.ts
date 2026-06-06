@@ -37,12 +37,10 @@ export const WEAPONS: Weapon[] = [
     id: "heavy-rocket-launcher",
     name: "Heavy Rocket Launcher",
     modelPath: "/models/weapons/heavy-rocket-launcher.glb",
-    targetSize: 3.1,
-    inspectTargetSize: 3.2,
+    targetSize: 3.4,
+    inspectTargetSize: 3.5,
     modelLayout: {
-      // Barrel is authored along +Z; stand it upright for turntable display.
-      rotation: [-Math.PI / 2, 0, 0],
-      platformLift: 0.06,
+      platformLift: 0.22,
     },
     stats: {
       damage: 95,
