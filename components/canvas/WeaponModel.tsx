@@ -3,25 +3,31 @@
 import { useMemo } from "react";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
-import { enhancePBRMaterials, normalizeModel } from "@/lib/normalizeModel";
+import {
+  enhancePBRMaterials,
+  normalizeModel,
+  type ModelLayout,
+} from "@/lib/normalizeModel";
 import { WEAPON_PLATFORM_OFFSET } from "@/lib/sceneLayout";
 
 type WeaponModelProps = {
   modelPath: string;
   targetSize?: number;
+  modelLayout?: ModelLayout;
   isActive?: boolean;
 };
 
 export function WeaponModel({
   modelPath,
   targetSize = 2,
+  modelLayout,
   isActive = true,
 }: WeaponModelProps) {
   const { scene } = useGLTF(modelPath);
 
   const model = useMemo(() => {
     const clone = scene.clone(true);
-    normalizeModel(clone, targetSize);
+    normalizeModel(clone, targetSize, modelLayout);
     enhancePBRMaterials(clone);
     clone.traverse((child) => {
       if (!(child instanceof THREE.Mesh)) return;
@@ -36,12 +42,12 @@ export function WeaponModel({
       }
     });
     return clone;
-  }, [scene, targetSize, isActive]);
+  }, [scene, targetSize, modelLayout, isActive]);
+
+  const platformY =
+    WEAPON_PLATFORM_OFFSET + (modelLayout?.platformLift ?? 0);
 
   return (
-    <primitive
-      object={model}
-      position={[0, WEAPON_PLATFORM_OFFSET, 0]}
-    />
+    <primitive object={model} position={[0, platformY, 0]} />
   );
 }
