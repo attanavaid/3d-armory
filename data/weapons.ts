@@ -79,7 +79,7 @@ export const WEAPONS: Weapon[] = [
     targetSize: 3.4,
     inspectTargetSize: 3.5,
     modelLayout: {
-      platformLift: 1,
+      platformLift: 0.9,
     },
     stats: {
       damage: 74,
