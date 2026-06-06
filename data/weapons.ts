@@ -52,6 +52,25 @@ export const WEAPONS: Weapon[] = [
     },
   },
   {
+    id: "assault-rifle-1",
+    name: "Assault Rifle",
+    subtitle: "Balanced automatic rifle for mid-range engagements",
+    modelPath: "/models/weapons/assault-rifle-1.glb",
+    targetSize: 3.0,
+    inspectTargetSize: 3.1,
+    modelLayout: {
+      platformLift: 0.2,
+    },
+    stats: {
+      damage: 68,
+      recoil: 45,
+      accuracy: 78,
+      range: 65,
+      fireRate: 72,
+      mobility: 70,
+    },
+  },
+  {
     id: "obsidian-blade",
     name: "Obsidian Blade",
     subtitle: "Forged in volcanic glass — PBR showcase",
