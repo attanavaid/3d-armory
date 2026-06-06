@@ -39,6 +39,7 @@ export function Turntable({ weapon, isActive }: TurntableProps) {
       <WeaponModel
         modelPath={weapon.modelPath}
         targetSize={weapon.targetSize}
+        modelLayout={weapon.modelLayout}
         isActive={isActive}
       />
     </group>
