@@ -36,6 +36,7 @@ export const WEAPONS: Weapon[] = [
   {
     id: "heavy-rocket-launcher",
     name: "Heavy Rocket Launcher",
+    subtitle: "Shoulder-fired launcher for heavy anti-armor strikes",
     modelPath: "/models/weapons/heavy-rocket-launcher.glb",
     targetSize: 4.1,
     inspectTargetSize: 4.2,
@@ -87,6 +88,25 @@ export const WEAPONS: Weapon[] = [
       range: 75,
       fireRate: 20,
       mobility: 42,
+    },
+  },
+  {
+    id: "dark-matter-surge-rifle",
+    name: "Dark Matter Surge Rifle",
+    subtitle: "Exotic energy rifle channeling volatile dark-matter bursts",
+    modelPath: "/models/weapons/dark-matter-surge-rifle.glb",
+    targetSize: 3.4,
+    inspectTargetSize: 3.5,
+    modelLayout: {
+      platformLift: 0.6,
+    },
+    stats: {
+      damage: 82,
+      recoil: 38,
+      accuracy: 74,
+      range: 70,
+      fireRate: 68,
+      mobility: 62,
     },
   },
   {
