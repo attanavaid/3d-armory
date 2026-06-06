@@ -37,10 +37,10 @@ export const WEAPONS: Weapon[] = [
     id: "heavy-rocket-launcher",
     name: "Heavy Rocket Launcher",
     modelPath: "/models/weapons/heavy-rocket-launcher.glb",
-    targetSize: 3.4,
-    inspectTargetSize: 3.5,
+    targetSize: 4.1,
+    inspectTargetSize: 4.2,
     modelLayout: {
-      platformLift: 1,
+      platformLift: 1.2,
     },
     stats: {
       damage: 95,
@@ -56,10 +56,10 @@ export const WEAPONS: Weapon[] = [
     name: "Assault Rifle",
     subtitle: "Balanced automatic rifle for mid-range engagements",
     modelPath: "/models/weapons/assault-rifle-1.glb",
-    targetSize: 3.0,
-    inspectTargetSize: 3.1,
+    targetSize: 3.4,
+    inspectTargetSize: 3.5,
     modelLayout: {
-      platformLift: 0.2,
+      platformLift: 0.6,
     },
     stats: {
       damage: 68,
@@ -68,6 +68,25 @@ export const WEAPONS: Weapon[] = [
       range: 65,
       fireRate: 72,
       mobility: 70,
+    },
+  },
+  {
+    id: "m319-grenade-launcher",
+    name: "M319 Grenade Launcher",
+    subtitle: "Single-shot explosive launcher for area denial",
+    modelPath: "/models/weapons/m319-grenade-launcher.glb",
+    targetSize: 3.8,
+    inspectTargetSize: 3.9,
+    modelLayout: {
+      platformLift: 0.8,
+    },
+    stats: {
+      damage: 90,
+      recoil: 65,
+      accuracy: 58,
+      range: 75,
+      fireRate: 20,
+      mobility: 42,
     },
   },
   {
