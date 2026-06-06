@@ -91,6 +91,25 @@ export const WEAPONS: Weapon[] = [
     },
   },
   {
+    id: "plasma-gun",
+    name: "Plasma Gun",
+    subtitle: "Compact energy sidearm with rapid plasma discharge",
+    modelPath: "/models/weapons/plasma-gun.glb",
+    targetSize: 3.2,
+    inspectTargetSize: 3.3,
+    modelLayout: {
+      platformLift: 0.6,
+    },
+    stats: {
+      damage: 62,
+      recoil: 32,
+      accuracy: 80,
+      range: 55,
+      fireRate: 78,
+      mobility: 74,
+    },
+  },
+  {
     id: "m319-grenade-launcher",
     name: "M319 Grenade Launcher",
     subtitle: "Single-shot explosive launcher for area denial",
