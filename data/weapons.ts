@@ -17,6 +17,8 @@ export const STAT_LABELS: Record<WeaponStatKey, string> = {
   mobility: "Mobility",
 };
 
+import type { ModelLayout } from "@/lib/normalizeModel";
+
 export type Weapon = {
   id: string;
   name: string;
@@ -24,6 +26,8 @@ export type Weapon = {
   modelPath: string;
   targetSize?: number;
   inspectTargetSize?: number;
+  /** Corrects exports with non-standard origin/orientation (priority assets). */
+  modelLayout?: ModelLayout;
   storeUrl?: string;
   stats: WeaponStats;
 };
@@ -35,6 +39,11 @@ export const WEAPONS: Weapon[] = [
     modelPath: "/models/weapons/heavy-rocket-launcher.glb",
     targetSize: 3.1,
     inspectTargetSize: 3.2,
+    modelLayout: {
+      // Barrel is authored along +Z; stand it upright for turntable display.
+      rotation: [-Math.PI / 2, 0, 0],
+      platformLift: 0.06,
+    },
     stats: {
       damage: 95,
       recoil: 78,
@@ -50,6 +59,11 @@ export const WEAPONS: Weapon[] = [
     subtitle: "Forged in volcanic glass — PBR showcase",
     modelPath: "/models/weapons/obsidian-blade.glb",
     targetSize: 2.2,
+    modelLayout: {
+      // Centered origin export — lift clear of the turntable cylinder.
+      groundAlign: "bottom",
+      platformLift: 0.28,
+    },
     stats: {
       damage: 72,
       recoil: 8,
