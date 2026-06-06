@@ -72,6 +72,25 @@ export const WEAPONS: Weapon[] = [
     },
   },
   {
+    id: "assault-rifle-plasma",
+    name: "Plasma Assault Rifle",
+    subtitle: "Energy-charged rifle firing superheated plasma bolts",
+    modelPath: "/models/weapons/assault-rifle-plasma.glb",
+    targetSize: 3.4,
+    inspectTargetSize: 3.5,
+    modelLayout: {
+      platformLift: 0.6,
+    },
+    stats: {
+      damage: 74,
+      recoil: 40,
+      accuracy: 76,
+      range: 68,
+      fireRate: 70,
+      mobility: 66,
+    },
+  },
+  {
     id: "m319-grenade-launcher",
     name: "M319 Grenade Launcher",
     subtitle: "Single-shot explosive launcher for area denial",
