@@ -1,6 +1,6 @@
 "use client";
 
-import { ContactShadows, Environment, OrbitControls } from "@react-three/drei";
+import { Environment, OrbitControls } from "@react-three/drei";
 import { useTheme } from "@/components/ThemeProvider";
 import { INSPECT_LAYOUT } from "@/lib/inspectLayout";
 import { SCENE_THEMES } from "@/lib/sceneTheme";
@@ -46,15 +46,10 @@ export function InspectScene({ weapon }: InspectSceneProps) {
       <Environment preset={scene.environmentPreset} />
 
       <group position={[0, pivotY, 0]}>
-        <ContactShadows
-          opacity={scene.contactShadowOpacity}
-          scale={8}
-          blur={2.5}
-          far={3}
-        />
         <WeaponModel
           modelPath={weapon.modelPath}
           targetSize={inspectSize}
+          modelLayout={weapon.modelLayout}
           isActive
         />
       </group>
