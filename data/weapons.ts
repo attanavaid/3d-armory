@@ -75,10 +75,10 @@ export const WEAPONS: Weapon[] = [
     name: "M319 Grenade Launcher",
     subtitle: "Single-shot explosive launcher for area denial",
     modelPath: "/models/weapons/m319-grenade-launcher.glb",
-    targetSize: 3.8,
-    inspectTargetSize: 3.9,
+    targetSize: 3.4,
+    inspectTargetSize: 3.5,
     modelLayout: {
-      platformLift: 0.8,
+      platformLift: 1.2,
     },
     stats: {
       damage: 90,
