@@ -110,6 +110,25 @@ export const WEAPONS: Weapon[] = [
     },
   },
   {
+    id: "chain-gun",
+    name: "Chain Gun",
+    subtitle: "Rotary automatic minigun built for sustained suppressive fire",
+    modelPath: "/models/weapons/chain-gun.glb",
+    targetSize: 3.6,
+    inspectTargetSize: 3.7,
+    modelLayout: {
+      platformLift: 1.1,
+    },
+    stats: {
+      damage: 76,
+      recoil: 72,
+      accuracy: 55,
+      range: 72,
+      fireRate: 92,
+      mobility: 38,
+    },
+  },
+  {
     id: "obsidian-blade",
     name: "Obsidian Blade",
     subtitle: "Forged in volcanic glass — PBR showcase",
