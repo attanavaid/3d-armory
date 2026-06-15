@@ -26,8 +26,6 @@ Open [http://localhost:3000](http://localhost:3000).
 2. Copy to `public/models/weapons/your-id.glb`.
 3. Add to `data/weapons.ts`.
 
-Placeholder models are Khronos glTF samples; replace them with your fantasy assets.
-
 ## Optional optimization
 
 ```bash
@@ -46,6 +44,5 @@ Push to GitHub and import the repo in Vercel, or run `npx vercel` from this dire
 
 - Next.js 16 (App Router)
 - React Three Fiber + drei
-- @react-spring/three (carousel)
 - Framer Motion (UI)
 - Tailwind CSS 4
