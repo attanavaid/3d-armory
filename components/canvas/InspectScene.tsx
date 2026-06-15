@@ -49,7 +49,7 @@ export function InspectScene({ weapon }: InspectSceneProps) {
         <WeaponModel
           modelPath={weapon.modelPath}
           targetSize={inspectSize}
-          modelLayout={weapon.modelLayout}
+          platformLift={weapon.platformLift}
           isActive
         />
       </group>
