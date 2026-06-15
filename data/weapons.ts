@@ -17,8 +17,6 @@ export const STAT_LABELS: Record<WeaponStatKey, string> = {
   mobility: "Mobility",
 };
 
-import type { ModelLayout } from "@/lib/normalizeModel";
-
 export type Weapon = {
   id: string;
   name: string;
@@ -26,8 +24,8 @@ export type Weapon = {
   modelPath: string;
   targetSize?: number;
   inspectTargetSize?: number;
-  /** Corrects exports with non-standard origin/orientation (priority assets). */
-  modelLayout?: ModelLayout;
+  /** Extra height above the turntable platform (added to WEAPON_PLATFORM_OFFSET). */
+  platformLift?: number;
   storeUrl?: string;
   stats: WeaponStats;
 };
@@ -40,9 +38,7 @@ export const WEAPONS: Weapon[] = [
     modelPath: "/models/weapons/heavy-rocket-launcher.glb",
     targetSize: 4.1,
     inspectTargetSize: 4.2,
-    modelLayout: {
-      platformLift: 1.2,
-    },
+    platformLift: 1.2,
     stats: {
       damage: 95,
       recoil: 78,
@@ -59,9 +55,7 @@ export const WEAPONS: Weapon[] = [
     modelPath: "/models/weapons/assault-rifle-1.glb",
     targetSize: 3.4,
     inspectTargetSize: 3.5,
-    modelLayout: {
-      platformLift: 0.6,
-    },
+    platformLift: 0.6,
     stats: {
       damage: 68,
       recoil: 45,
@@ -78,9 +72,7 @@ export const WEAPONS: Weapon[] = [
     modelPath: "/models/weapons/assault-rifle-plasma.glb",
     targetSize: 3.4,
     inspectTargetSize: 3.5,
-    modelLayout: {
-      platformLift: 0.9,
-    },
+    platformLift: 0.9,
     stats: {
       damage: 74,
       recoil: 40,
@@ -97,9 +89,7 @@ export const WEAPONS: Weapon[] = [
     modelPath: "/models/weapons/plasma-gun.glb",
     targetSize: 3.2,
     inspectTargetSize: 3.3,
-    modelLayout: {
-      platformLift: 0.9,
-    },
+    platformLift: 0.9,
     stats: {
       damage: 62,
       recoil: 32,
@@ -116,9 +106,7 @@ export const WEAPONS: Weapon[] = [
     modelPath: "/models/weapons/m319-grenade-launcher.glb",
     targetSize: 3.4,
     inspectTargetSize: 3.5,
-    modelLayout: {
-      platformLift: 1.2,
-    },
+    platformLift: 1.2,
     stats: {
       damage: 90,
       recoil: 65,
@@ -135,9 +123,7 @@ export const WEAPONS: Weapon[] = [
     modelPath: "/models/weapons/dark-matter-surge-rifle.glb",
     targetSize: 3.4,
     inspectTargetSize: 3.5,
-    modelLayout: {
-      platformLift: 0.6,
-    },
+    platformLift: 0.6,
     stats: {
       damage: 82,
       recoil: 38,
@@ -154,9 +140,7 @@ export const WEAPONS: Weapon[] = [
     modelPath: "/models/weapons/chain-gun.glb",
     targetSize: 3.6,
     inspectTargetSize: 3.7,
-    modelLayout: {
-      platformLift: 1.1,
-    },
+    platformLift: 1.1,
     stats: {
       damage: 76,
       recoil: 72,
