@@ -34,6 +34,7 @@ Use this checklist when exporting fantasy weapons for the armory viewer.
   subtitle: "Short flavor text",
   modelPath: "/models/weapons/your-weapon-id.glb",
   targetSize: 2.2, // tune so framing matches other weapons
+  platformLift: 0.6, // optional — lift above turntable if needed
 }
 ```
 
@@ -52,6 +53,5 @@ npx @gltf-transform/cli optimize public/models/weapons/your-weapon.glb public/mo
 | Flat / no normal detail | Re-export with normal map linked; check Non-Color data on normal image in Blender |
 | Too dark / too shiny | Tune Principled roughness/metallic; avoid overriding materials in code |
 | Wrong scale in viewer | Adjust `targetSize` in manifest |
+| Model clips turntable | Increase `platformLift` in manifest |
 | Huge download | Draco + lower texture resolution |
-
-Replace Khronos sample placeholders in `public/models/weapons/` with your own exports when ready.
