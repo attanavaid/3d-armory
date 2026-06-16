@@ -117,6 +117,23 @@ export const WEAPONS: Weapon[] = [
     },
   },
   {
+    id: "railgun",
+    name: "Railgun",
+    subtitle: "Halo-inspired ARC 920 — magnetic accelerator for long-range armor penetration",
+    modelPath: "/models/weapons/railgun.glb",
+    targetSize: 3.7,
+    inspectTargetSize: 3.8,
+    platformLift: 0.9,
+    stats: {
+      damage: 98,
+      recoil: 85,
+      accuracy: 94,
+      range: 95,
+      fireRate: 15,
+      mobility: 40,
+    },
+  },
+  {
     id: "m319-grenade-launcher",
     name: "M319 Grenade Launcher",
     subtitle: "Single-shot explosive launcher for area denial",
