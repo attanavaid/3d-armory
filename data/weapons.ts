@@ -154,5 +154,4 @@ export const WEAPONS: Weapon[] = [
 
 export const CAROUSEL_SPACING = 4;
 export const TRANSITION_MS = 750;
-
 export const WEAPON_STAT_KEYS = Object.keys(STAT_LABELS) as WeaponStatKey[];
