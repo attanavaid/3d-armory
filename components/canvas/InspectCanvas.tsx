@@ -3,12 +3,12 @@
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Preload } from "@react-three/drei";
-import { filterThreeClockDeprecationWarning } from "@/lib/filterThreeClockWarning";
+import { filterThreeConsoleWarnings } from "@/lib/filterThreeConsoleWarnings";
 import { INSPECT_LAYOUT } from "@/lib/inspectLayout";
 import { InspectScene } from "./InspectScene";
 import type { Weapon } from "@/data/weapons";
 
-filterThreeClockDeprecationWarning();
+filterThreeConsoleWarnings();
 
 type InspectCanvasProps = {
   weapon: Weapon;
