@@ -3,11 +3,11 @@
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Preload } from "@react-three/drei";
-import { filterThreeClockDeprecationWarning } from "@/lib/filterThreeClockWarning";
+import { filterThreeConsoleWarnings } from "@/lib/filterThreeConsoleWarnings";
 import { ArmoryScene } from "./ArmoryScene";
 import type { Weapon } from "@/data/weapons";
 
-filterThreeClockDeprecationWarning();
+filterThreeConsoleWarnings();
 
 type ArmoryCanvasProps = {
   weapons: Weapon[];
