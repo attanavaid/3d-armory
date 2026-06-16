@@ -100,6 +100,23 @@ export const WEAPONS: Weapon[] = [
     },
   },
   {
+    id: "link-gun",
+    name: "Link Gun",
+    subtitle: "Unreal Tournament–inspired energy weapon — chain lightning and plasma orbs",
+    modelPath: "/models/weapons/link-gun.glb",
+    targetSize: 3.4,
+    inspectTargetSize: 3.5,
+    platformLift: 0.8,
+    stats: {
+      damage: 70,
+      recoil: 18,
+      accuracy: 82,
+      range: 60,
+      fireRate: 85,
+      mobility: 68,
+    },
+  },
+  {
     id: "m319-grenade-launcher",
     name: "M319 Grenade Launcher",
     subtitle: "Single-shot explosive launcher for area denial",
