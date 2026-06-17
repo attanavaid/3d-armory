@@ -26,6 +26,8 @@ export type Weapon = {
   inspectTargetSize?: number;
   /** Extra height above the turntable platform (added to WEAPON_PLATFORM_OFFSET). */
   platformLift?: number;
+  /** Add 180° to inspect Y rotation when the export faces the wrong way. */
+  invertInspectFacing?: boolean;
   storeUrl?: string;
   stats: WeaponStats;
 };
@@ -56,6 +58,7 @@ export const WEAPONS: Weapon[] = [
     targetSize: 3.4,
     inspectTargetSize: 3.5,
     platformLift: 0.6,
+    invertInspectFacing: true,
     stats: {
       damage: 68,
       recoil: 45,
