@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Preload } from "@react-three/drei";
 import { filterThreeConsoleWarnings } from "@/lib/filterThreeConsoleWarnings";
-import { INSPECT_LAYOUT } from "@/lib/inspectLayout";
+import { getInspectCameraPosition, INSPECT_LAYOUT } from "@/lib/inspectLayout";
 import { InspectScene } from "./InspectScene";
 import type { Weapon } from "@/data/weapons";
 
@@ -20,7 +20,7 @@ export function InspectCanvas({ weapon }: InspectCanvasProps) {
       shadows="percentage"
       dpr={[1, 2]}
       camera={{
-        position: INSPECT_LAYOUT.cameraPosition,
+        position: getInspectCameraPosition(),
         fov: INSPECT_LAYOUT.fov,
         near: 0.1,
         far: 100,
