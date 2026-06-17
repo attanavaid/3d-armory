@@ -2,7 +2,7 @@
 
 import { Environment, OrbitControls } from "@react-three/drei";
 import { useTheme } from "@/components/ThemeProvider";
-import { INSPECT_LAYOUT } from "@/lib/inspectLayout";
+import { INSPECT_LAYOUT, getInspectModelYaw, INSPECT_LOOK_AT } from "@/lib/inspectLayout";
 import { SCENE_THEMES } from "@/lib/sceneTheme";
 import { InspectCameraRig } from "./InspectCameraRig";
 import { WeaponModel } from "./WeaponModel";
@@ -17,6 +17,7 @@ export function InspectScene({ weapon }: InspectSceneProps) {
   const scene = SCENE_THEMES[resolvedTheme];
   const baseSize = weapon.inspectTargetSize ?? weapon.targetSize ?? 2;
   const inspectSize = baseSize * INSPECT_LAYOUT.scaleMultiplier;
+  const modelYaw = getInspectModelYaw(weapon.invertInspectFacing);
 
   return (
     <>
@@ -44,12 +45,14 @@ export function InspectScene({ weapon }: InspectSceneProps) {
 
       <Environment preset={scene.environmentPreset} />
 
-      <WeaponModel
-        modelPath={weapon.modelPath}
-        targetSize={inspectSize}
-        align="center"
-        isActive
-      />
+      <group rotation={[0, modelYaw, 0]}>
+        <WeaponModel
+          modelPath={weapon.modelPath}
+          targetSize={inspectSize}
+          align="center"
+          isActive
+        />
+      </group>
 
       <OrbitControls
         enablePan={false}
@@ -57,7 +60,7 @@ export function InspectScene({ weapon }: InspectSceneProps) {
         maxDistance={INSPECT_LAYOUT.maxDistance}
         minPolarAngle={Math.PI / 6}
         maxPolarAngle={Math.PI / 1.35}
-        target={[0, 0, 0]}
+        target={[...INSPECT_LOOK_AT]}
         touches={{
           ONE: 0,
           TWO: 2,
