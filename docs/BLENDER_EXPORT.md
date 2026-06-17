@@ -35,6 +35,7 @@ Use this checklist when exporting fantasy weapons for the armory viewer.
   modelPath: "/models/weapons/your-weapon-id.glb",
   targetSize: 2.2, // tune so framing matches other weapons
   platformLift: 0.6, // optional — lift above turntable if needed
+  invertInspectFacing: true, // optional — flip inspect view when export faces backward
 }
 ```
 
