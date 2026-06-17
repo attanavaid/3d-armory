@@ -17,7 +17,6 @@ export function InspectScene({ weapon }: InspectSceneProps) {
   const scene = SCENE_THEMES[resolvedTheme];
   const baseSize = weapon.inspectTargetSize ?? weapon.targetSize ?? 2;
   const inspectSize = baseSize * INSPECT_LAYOUT.scaleMultiplier;
-  const pivotY = INSPECT_LAYOUT.modelPivotY;
 
   return (
     <>
@@ -45,14 +44,12 @@ export function InspectScene({ weapon }: InspectSceneProps) {
 
       <Environment preset={scene.environmentPreset} />
 
-      <group position={[0, pivotY, 0]}>
-        <WeaponModel
-          modelPath={weapon.modelPath}
-          targetSize={inspectSize}
-          platformLift={weapon.platformLift}
-          isActive
-        />
-      </group>
+      <WeaponModel
+        modelPath={weapon.modelPath}
+        targetSize={inspectSize}
+        align="center"
+        isActive
+      />
 
       <OrbitControls
         enablePan={false}
@@ -60,7 +57,7 @@ export function InspectScene({ weapon }: InspectSceneProps) {
         maxDistance={INSPECT_LAYOUT.maxDistance}
         minPolarAngle={Math.PI / 6}
         maxPolarAngle={Math.PI / 1.35}
-        target={[0, pivotY, 0]}
+        target={[0, 0, 0]}
         touches={{
           ONE: 0,
           TWO: 2,
