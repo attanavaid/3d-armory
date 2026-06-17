@@ -123,7 +123,7 @@ export const WEAPONS: Weapon[] = [
     modelPath: "/models/weapons/railgun.glb",
     targetSize: 3.7,
     inspectTargetSize: 3.8,
-    platformLift: 0.9,
+    platformLift: 1.1,
     stats: {
       damage: 98,
       recoil: 85,
