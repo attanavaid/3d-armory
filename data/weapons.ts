@@ -106,7 +106,7 @@ export const WEAPONS: Weapon[] = [
     modelPath: "/models/weapons/link-gun.glb",
     targetSize: 3.4,
     inspectTargetSize: 3.5,
-    platformLift: 1.2,
+    platformLift: 1.1,
     stats: {
       damage: 70,
       recoil: 18,
