@@ -4,9 +4,12 @@ import dynamic from "next/dynamic";
 import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useGLTF } from "@react-three/drei";
-import { useTheme } from "@/components/ThemeProvider";
 import { WEAPONS, type Weapon } from "@/data/weapons";
-import { wrapIndex, getNeighborIndices } from "@/lib/carousel";
+import { wrapIndex } from "@/lib/carousel";
+import {
+  preloadCarouselWindow,
+  queueRemainingWeaponPreloads,
+} from "@/lib/preloadWeapons";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { InspectView } from "@/components/inspect/InspectView";
 import { LoadingOverlay } from "./ui/LoadingOverlay";
@@ -23,7 +26,6 @@ const ArmoryCanvas = dynamic(
 type ViewMode = "gallery" | "inspect";
 
 export function Armory() {
-  const { resolvedTheme } = useTheme();
   const [view, setView] = useState<ViewMode>("gallery");
   const [inspectWeapon, setInspectWeapon] = useState<Weapon | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -36,25 +38,14 @@ export function Armory() {
   const total = WEAPONS.length;
   const isGallery = view === "gallery";
 
-  const preloadNeighbors = useCallback(
-    (index: number) => {
-      const { prev, next } = getNeighborIndices(index, total);
-      useGLTF.preload(WEAPONS[prev].modelPath);
-      useGLTF.preload(WEAPONS[next].modelPath);
-      useGLTF.preload(WEAPONS[index].modelPath);
-    },
-    [total]
-  );
-
-  useEffect(() => {
-    WEAPONS.forEach((w) => useGLTF.preload(w.modelPath));
-    const timer = setTimeout(() => setIsReady(true), 500);
-    return () => clearTimeout(timer);
+  const handleAssetsReady = useCallback(() => {
+    setIsReady(true);
   }, []);
 
   useEffect(() => {
-    if (isGallery) preloadNeighbors(activeIndex);
-  }, [activeIndex, preloadNeighbors, isGallery]);
+    preloadCarouselWindow(WEAPONS, activeIndex);
+    queueRemainingWeaponPreloads(WEAPONS, activeIndex);
+  }, [activeIndex]);
 
   useEffect(() => {
     if (inspectWeapon) useGLTF.preload(inspectWeapon.modelPath);
@@ -122,7 +113,6 @@ export function Armory() {
       {isGallery && (
         <>
           <motion.div
-            key={resolvedTheme}
             className="absolute inset-0"
             onPointerDown={handlePointerDown}
             onPointerUp={handlePointerUp}
@@ -132,6 +122,7 @@ export function Armory() {
               activeIndex={activeIndex}
               instantCarousel={reducedMotion}
               onTransitionEnd={handleTransitionEnd}
+              onAssetsReady={handleAssetsReady}
             />
           </motion.div>
 
