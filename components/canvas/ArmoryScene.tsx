@@ -44,8 +44,6 @@ export function ArmoryScene({
       <directionalLight
         position={[4, 6, 4]}
         intensity={scene.directionalIntensity}
-        castShadow
-        shadow-mapSize={[1024, 1024]}
       />
       <spotLight
         position={[-3, 5, 2]}
@@ -64,7 +62,7 @@ export function ArmoryScene({
 
       <Environment preset={scene.environmentPreset} />
 
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} receiveShadow>
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
         <circleGeometry args={[8, 64]} />
         <meshStandardMaterial
           color={scene.ground}
