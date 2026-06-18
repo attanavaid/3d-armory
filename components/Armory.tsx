@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useGLTF } from "@react-three/drei";
+import { useTheme } from "@/components/ThemeProvider";
 import { WEAPONS, type Weapon } from "@/data/weapons";
 import { wrapIndex } from "@/lib/carousel";
 import {
@@ -26,6 +27,7 @@ const ArmoryCanvas = dynamic(
 type ViewMode = "gallery" | "inspect";
 
 export function Armory() {
+  const { resolvedTheme } = useTheme();
   const [view, setView] = useState<ViewMode>("gallery");
   const [inspectWeapon, setInspectWeapon] = useState<Weapon | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -129,7 +131,10 @@ export function Armory() {
           <motion.div
             className="pointer-events-none absolute inset-0"
             style={{
-              background: `radial-gradient(ellipse at center, transparent 0%, var(--overlay-vignette) 70%)`,
+              background:
+                resolvedTheme === "light"
+                  ? "radial-gradient(ellipse at center, transparent 0%, transparent 72%, rgb(243 244 246 / 0.55) 100%)"
+                  : "radial-gradient(ellipse at center, transparent 0%, var(--overlay-vignette) 70%)",
             }}
           />
 
