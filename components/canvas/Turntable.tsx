@@ -20,14 +20,14 @@ export function Turntable({ weapon, isActive }: TurntableProps) {
   const rotationRef = useRef(0);
 
   useFrame((_, delta) => {
-    if (!turntableRef.current) return;
-    rotationRef.current += delta * (isActive ? 0.35 : 0.15);
+    if (!turntableRef.current || !isActive) return;
+    rotationRef.current += delta * 0.35;
     turntableRef.current.rotation.y = rotationRef.current;
   });
 
   return (
     <group ref={turntableRef}>
-      <mesh position={[0, 0.02, 0]} receiveShadow>
+      <mesh position={[0, 0.02, 0]}>
         <cylinderGeometry args={[1.1, 1.2, 0.08, 32]} />
         <meshStandardMaterial
           color={scene.platform}
