@@ -4,6 +4,18 @@ const DEFAULT_TARGET_SIZE = 2;
 
 export type ModelAlign = "bottom" | "center";
 
+/** Deep-clone mesh materials so GLTF cache instances are not mutated. */
+export function cloneMeshMaterials(object: THREE.Object3D): void {
+  object.traverse((child) => {
+    if (!(child instanceof THREE.Mesh)) return;
+    if (Array.isArray(child.material)) {
+      child.material = child.material.map((material) => material.clone());
+      return;
+    }
+    child.material = child.material.clone();
+  });
+}
+
 export function normalizeModel(
   object: THREE.Object3D,
   targetSize: number = DEFAULT_TARGET_SIZE,
@@ -33,6 +45,25 @@ export function enhancePBRMaterials(object: THREE.Object3D): void {
       if (material instanceof THREE.MeshStandardMaterial) {
         material.envMapIntensity = 1.2;
         material.needsUpdate = true;
+      }
+    }
+  });
+}
+
+export function setModelActiveState(
+  object: THREE.Object3D,
+  isActive: boolean
+): void {
+  object.traverse((child) => {
+    if (!(child instanceof THREE.Mesh)) return;
+    const materials = Array.isArray(child.material)
+      ? child.material
+      : [child.material];
+
+    for (const material of materials) {
+      if (material instanceof THREE.MeshStandardMaterial) {
+        material.opacity = isActive ? 1 : 0.35;
+        material.transparent = !isActive;
       }
     }
   });
