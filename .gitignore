@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# uncompressed model backups (keep locally, do not commit)
+public/models/weapons/_originals/
