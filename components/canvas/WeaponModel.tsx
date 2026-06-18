@@ -1,9 +1,14 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useGLTF } from "@react-three/drei";
-import * as THREE from "three";
-import { enhancePBRMaterials, normalizeModel, type ModelAlign } from "@/lib/normalizeModel";
+import {
+  cloneMeshMaterials,
+  enhancePBRMaterials,
+  normalizeModel,
+  setModelActiveState,
+  type ModelAlign,
+} from "@/lib/normalizeModel";
 import { WEAPON_PLATFORM_OFFSET } from "@/lib/sceneLayout";
 
 type WeaponModelProps = {
@@ -26,22 +31,15 @@ export function WeaponModel({
 
   const model = useMemo(() => {
     const clone = scene.clone(true);
+    cloneMeshMaterials(clone);
     normalizeModel(clone, targetSize, align);
     enhancePBRMaterials(clone);
-    clone.traverse((child) => {
-      if (!(child instanceof THREE.Mesh)) return;
-      const materials = Array.isArray(child.material)
-        ? child.material
-        : [child.material];
-      for (const mat of materials) {
-        if (mat instanceof THREE.MeshStandardMaterial) {
-          mat.opacity = isActive ? 1 : 0.35;
-          mat.transparent = !isActive;
-        }
-      }
-    });
     return clone;
-  }, [scene, targetSize, align, isActive]);
+  }, [scene, targetSize, align]);
+
+  useEffect(() => {
+    setModelActiveState(model, isActive);
+  }, [model, isActive]);
 
   const y =
     align === "center" ? 0 : WEAPON_PLATFORM_OFFSET + platformLift;
