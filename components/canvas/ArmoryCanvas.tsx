@@ -2,9 +2,9 @@
 
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Preload } from "@react-three/drei";
 import { filterThreeConsoleWarnings } from "@/lib/filterThreeConsoleWarnings";
 import { ArmoryScene } from "./ArmoryScene";
+import { AssetLoadReporter } from "./AssetLoadReporter";
 import type { Weapon } from "@/data/weapons";
 
 filterThreeConsoleWarnings();
@@ -14,6 +14,7 @@ type ArmoryCanvasProps = {
   activeIndex: number;
   instantCarousel?: boolean;
   onTransitionEnd?: () => void;
+  onAssetsReady?: () => void;
 };
 
 export function ArmoryCanvas({
@@ -21,10 +22,10 @@ export function ArmoryCanvas({
   activeIndex,
   instantCarousel,
   onTransitionEnd,
+  onAssetsReady,
 }: ArmoryCanvasProps) {
   return (
     <Canvas
-      shadows="percentage"
       dpr={[1, 2]}
       gl={{ antialias: true, alpha: false }}
       className="h-full w-full touch-none"
@@ -36,7 +37,7 @@ export function ArmoryCanvas({
           instantCarousel={instantCarousel}
           onTransitionEnd={onTransitionEnd}
         />
-        <Preload all />
+        <AssetLoadReporter onReady={onAssetsReady} />
       </Suspense>
     </Canvas>
   );
