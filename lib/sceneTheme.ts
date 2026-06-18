@@ -5,6 +5,8 @@ export type ResolvedTheme = "dark" | "light";
 export type SceneTheme = {
   background: string;
   fog: string;
+  fogNear: number;
+  fogFar: number;
   ground: string;
   platform: string;
   ambientIntensity: number;
@@ -21,6 +23,8 @@ export const SCENE_THEMES: Record<ResolvedTheme, SceneTheme> = {
   dark: {
     background: palette.black.base,
     fog: palette.black.base,
+    fogNear: 8,
+    fogFar: 18,
     ground: palette.gray[900],
     platform: palette.gray[800],
     ambientIntensity: 0.25,
@@ -35,6 +39,8 @@ export const SCENE_THEMES: Record<ResolvedTheme, SceneTheme> = {
   light: {
     background: palette.gray[100],
     fog: palette.gray[100],
+    fogNear: 22,
+    fogFar: 48,
     ground: palette.gray[300],
     platform: palette.gray[200],
     ambientIntensity: 0.55,
