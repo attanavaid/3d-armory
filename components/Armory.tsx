@@ -107,7 +107,7 @@ export function Armory() {
   };
 
   return (
-    <main className="relative h-dvh w-full overflow-hidden bg-[var(--background)] transition-colors duration-300">
+    <main className="relative h-dvh w-full overflow-hidden bg-background transition-colors duration-300">
       <AppChrome showTitle={isGallery} />
 
       {isGallery && (
