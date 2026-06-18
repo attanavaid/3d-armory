@@ -39,6 +39,3 @@ export function filterThreeConsoleWarnings(): void {
     originalWarn(...args);
   };
 }
-
-/** @deprecated Use filterThreeConsoleWarnings */
-export const filterThreeClockDeprecationWarning = filterThreeConsoleWarnings;
