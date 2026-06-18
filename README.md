@@ -1,11 +1,12 @@
 # Fantasy Armory
 
-Interactive 3D weapon gallery built with Next.js, React Three Fiber, and PBR glTF models. Browse weapons on rotating turntables with left/right navigation and a futuristic HUD.
+Interactive 3D weapon gallery built with Next.js, React Three Fiber, and PBR glTF models. Browse weapons on rotating turntables with left/right navigation, inspect view with stats, and a futuristic HUD.
 
 ## Features
 
-- Horizontal carousel with smooth slide transitions
+- Horizontal carousel with smooth slide transitions (virtualized to active + neighbors)
 - Auto-rotating turntable with floating weapon display
+- **Inspect view** — side-angle 3D preview with orbit controls and weapon stats
 - PBR-accurate lighting (environment maps, rim lights, contact shadows)
 - Keyboard arrows, swipe, and on-screen navigation
 - **Light / dark theme** toggle with persisted preference and matching 3D scene lighting
@@ -26,11 +27,17 @@ Open [http://localhost:3000](http://localhost:3000).
 2. Copy to `public/models/weapons/your-id.glb`.
 3. Add to `data/weapons.ts`.
 
+Optional manifest fields: `platformLift` (turntable height), `invertInspectFacing` (flip inspect view), `inspectTargetSize`.
+
 ## Optional optimization
+
+Compress large GLB assets before committing:
 
 ```bash
 npx @gltf-transform/cli optimize public/models/weapons/model.glb public/models/weapons/model-opt.glb
 ```
+
+Static models are served with long-cache headers from `next.config.ts`.
 
 ## Deploy (Vercel)
 
