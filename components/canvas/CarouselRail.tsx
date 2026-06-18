@@ -1,11 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import { CAROUSEL_SPACING, type Weapon } from "@/data/weapons";
-import { railOffsetX } from "@/lib/carousel";
+import { getNeighborIndices, railOffsetX } from "@/lib/carousel";
 import { Turntable } from "./Turntable";
 
 type CarouselRailProps = {
@@ -15,8 +14,30 @@ type CarouselRailProps = {
   onTransitionEnd?: () => void;
 };
 
+type CarouselSlot = {
+  index: number;
+  weapon: Weapon;
+};
+
 const LERP_SPEED = 0.09;
 const SNAP_THRESHOLD = 0.02;
+
+function getCarouselSlots(
+  weapons: Weapon[],
+  activeIndex: number
+): CarouselSlot[] {
+  const total = weapons.length;
+  if (total === 0) return [];
+  if (total === 1) return [{ index: 0, weapon: weapons[0] }];
+
+  const { prev, current, next } = getNeighborIndices(activeIndex, total);
+  const indices = [...new Set([prev, current, next])];
+
+  return indices.map((index) => ({
+    index,
+    weapon: weapons[index],
+  }));
+}
 
 export function CarouselRail({
   weapons,
@@ -29,6 +50,11 @@ export function CarouselRail({
   const transitioningRef = useRef(false);
   const onEndRef = useRef(onTransitionEnd);
   onEndRef.current = onTransitionEnd;
+
+  const slots = useMemo(
+    () => getCarouselSlots(weapons, activeIndex),
+    [weapons, activeIndex]
+  );
 
   useEffect(() => {
     transitioningRef.current = true;
@@ -57,13 +83,9 @@ export function CarouselRail({
     }
   });
 
-  useEffect(() => {
-    weapons.forEach((w) => useGLTF.preload(w.modelPath));
-  }, [weapons]);
-
   return (
     <group ref={groupRef}>
-      {weapons.map((weapon, index) => (
+      {slots.map(({ index, weapon }) => (
         <group
           key={weapon.id}
           position={[index * CAROUSEL_SPACING, 0, 0]}
