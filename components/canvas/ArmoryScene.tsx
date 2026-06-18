@@ -38,7 +38,7 @@ export function ArmoryScene({
       />
       <CameraRig />
       <color attach="background" args={[scene.background]} />
-      <fog attach="fog" args={[scene.fog, 8, 18]} />
+      <fog attach="fog" args={[scene.fog, scene.fogNear, scene.fogFar]} />
 
       <ambientLight intensity={scene.ambientIntensity} />
       <directionalLight
