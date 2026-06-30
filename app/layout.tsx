@@ -20,7 +20,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://3d-armory.vercel.app";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Fantasy Armory | 3D Weapon Gallery",
   description:
     "Interactive 3D armory showcasing fantasy weapons on rotating turntables with PBR materials.",
@@ -28,6 +31,13 @@ export const metadata: Metadata = {
     title: "Fantasy Armory",
     description: "Browse fantasy weapons in a futuristic 3D gallery.",
     type: "website",
+    url: siteUrl,
+    siteName: "Fantasy Armory",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Fantasy Armory",
+    description: "Browse fantasy weapons in a futuristic 3D gallery.",
   },
 };
 
